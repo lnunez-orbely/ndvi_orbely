@@ -1,0 +1,7 @@
+earthengine_api==0.1.391
+geemap==0.32.0
+geopandas==0.14.2
+numpy==1.26.4
+pandas==2.2.2
+plotly==5.20.0
+streamlit==1.35.0
