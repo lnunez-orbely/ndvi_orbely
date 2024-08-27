@@ -10,10 +10,17 @@ import pandas as pd
 st.set_page_config('Buscador', layout="wide")
 st.logo("Orbely_Logo2.png",icon_image="Orbely_Logo2.png", link="https://orbely.com/")
 st.header('Visualizador de NDVI')
+
+service_account = st.session_state['cred']['service_account'][0]
+s=string(st.session_state['cred']['key_data'][0]).replace('\\n', '\n')
+credentials = ee.ServiceAccountCredentials(service_account, key_data=s)
+ee.Initialize(credentials)
+
 cont0 = st.container()
 col01, col02 = cont0.columns([4, 1.1])
 with col01:
   tab1, tab2 = st.tabs([":earth_americas: Mapa", "📈 Serie Temporal"])
+
 
 vis_params_lim = {'color': 'white', 'pointSize': 3,'pointShape': 'circle','width': 3,'lineType': 'solid','fillColor': '#00000000'}
 visParams = {'bands':['B4','B3','B2'],'min': 0, 'max': 3000,'gamma':1.5}
