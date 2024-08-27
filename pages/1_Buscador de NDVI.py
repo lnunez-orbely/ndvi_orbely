@@ -19,7 +19,7 @@ with col01:
 
 service_account = st.session_state['cred']['service_account'][0]
 os.environ['private_key']=st.session_state['cred']['key_data'][0]
-credentials = ee.ServiceAccountCredentials(service_account, key_data=os.environ.get('private_key').replace('\\n','')
+credentials = ee.ServiceAccountCredentials(service_account, key_data=os.environ.get('private_key').replace('\\n',''))
 st.write(credentials)
 ee.Initialize(credentials)
 
