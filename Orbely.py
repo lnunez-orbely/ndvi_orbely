@@ -46,8 +46,8 @@ if cred:
     @st.cache_data
     def auth():
                 service_account = st.session_state['cred']['service_account'][0]
-                s=str(st.session_state['cred']['key_data'][0])
-                credentials = ee.ServiceAccountCredentials(service_account, key_data=s)
+                os.environ['private_key']=st.session_state['cred']['key_data'][0]
+                credentials = ee.ServiceAccountCredentials(service_account, key_data=os.environ.get('private_key').replace('\\n', '\n'))
                 ee.Initialize(credentials)
         
 if lote_shp:
