@@ -12,7 +12,7 @@ st.logo("Orbely_Logo2.png",icon_image="Orbely_Logo2.png", link="https://orbely.c
 st.header('Visualizador de NDVI')
 
 service_account = st.session_state['cred']['service_account'][0]
-s=string(st.session_state['cred']['key_data'][0]).replace('\\n', '\n')
+s=str(st.session_state['cred']['key_data'][0]).replace('\\n', '\n')
 credentials = ee.ServiceAccountCredentials(service_account, key_data=s)
 ee.Initialize(credentials)
 
@@ -53,7 +53,7 @@ if 'cred' in st.session_state and 'lotes' in st.session_state:
   @st.cache_data
   def auth():
     service_account = st.session_state['cred']['service_account'][0]
-    s=string(st.session_state['cred']['key_data'][0]).replace('\\n', '\n')
+    s=str(st.session_state['cred']['key_data'][0]).replace('\\n', '\n')
     credentials = ee.ServiceAccountCredentials(service_account, key_data=s)
     ee.Initialize(credentials)
   
