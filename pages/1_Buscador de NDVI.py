@@ -17,12 +17,6 @@ col01, col02 = cont0.columns([4, 1.1])
 with col01:
   tab1, tab2 = st.tabs([":earth_americas: Mapa", "📈 Serie Temporal"])
 
-service_account = st.session_state['cred']['service_account'][0]
-os.environ['private_key']=st.session_state['cred']['key_data'][0]
-credentials = ee.ServiceAccountCredentials(service_account, key_data=os.environ.get('private_key').replace('\\n','\n'))
-st.write(credentials)
-ee.Initialize(credentials)
-
 vis_params_lim = {'color': 'white', 'pointSize': 3,'pointShape': 'circle','width': 3,'lineType': 'solid','fillColor': '#00000000'}
 visParams = {'bands':['B4','B3','B2'],'min': 0, 'max': 3000,'gamma':1.5}
 
