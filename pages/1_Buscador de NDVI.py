@@ -6,7 +6,7 @@ import numpy as np
 import plotly.graph_objects as go
 import pandas as pd
 
-st.write(st.session_state['cred']['key_data'][0)
+st.write(st.session_state['cred']['key_data'][0))
 
 st.set_page_config('Buscador', layout="wide")
 st.logo("Orbely_Logo2.png",icon_image="Orbely_Logo2.png", link="https://orbely.com/")
