@@ -31,7 +31,7 @@ st.markdown("""
         </style>
         """, unsafe_allow_html=True)
 
-Map=geemap.Map(center=[-31.42,-64.19], zoom=10,basemap="HYBRID", control_scale=True)
+Map=geemap.Map(center=[-31.42,-64.19], zoom=10,basemap="HYBRID", control_scale=True, Draw_export=True)
 ndvi_name=None
 
 if 'min' not in st.session_state:
