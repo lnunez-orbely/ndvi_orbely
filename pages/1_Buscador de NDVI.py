@@ -41,7 +41,7 @@ if 'max' not in st.session_state:
 if 'map' not in st.session_state or ndvi_name==None:
     st.session_state['map']=Map
 if 'clouds' not in st.session_state:
-  st.session_state['clouds']= 40
+  st.session_state['clouds']= 10
 
 if 'cred' in st.session_state and 'lotes' in st.session_state:
   select_client=st.sidebar.selectbox('Seleccionar Cliente',st.session_state['lotes'].cliente.unique(),index=None,placeholder='Cliente')
