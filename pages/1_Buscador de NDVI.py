@@ -80,7 +80,7 @@ if 'cred' in st.session_state and 'lotes' in st.session_state:
             st.write("")
             st.write("")
             centrar=st.button("Centrar sobre lote")
-            clouds_input= st.number_input(label='Filtrar por nubosidad (%)', value=40)
+            clouds_input= st.number_input(label='Filtrar por nubosidad (%)', value=10)
             if clouds_input:
                 st.session_state['clouds']=clouds_input
           reducer = ee.Reducer.mean().combine(reducer2=ee.Reducer.stdDev(), sharedInputs=True)
