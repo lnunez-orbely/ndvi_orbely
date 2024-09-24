@@ -70,9 +70,9 @@ if 'cred' in st.session_state and 'lotes' in st.session_state:
         st.session_state['map']=Map
  
         with st.sidebar:
-          st.sidebar.title("Selección de Fecha")
-          fecha11=str(st.date_input("Fecha 1", value=None))
-          fecha22=str(st.date_input("Fecha 2", value=None))
+          st.sidebar.title("Selección Rango de Fecha")
+          fecha11=str(st.date_input("Fecha Inicial", value=None))
+          fecha22=str(st.date_input("Fecha Final", value=None))
 
         if fecha11!='None' and fecha22!='None':
           with col02:
