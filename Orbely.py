@@ -26,10 +26,7 @@ im1=col001.image('Sentinel_2_1.png', width=100)
 title=col002.title("Visualización y Descarga de :green[NDVI]")
 im2=col003.image('Sentinel_2_2.png', width=100)
 
-service_account = st.session_state['cred']['service_account'][0]
-os.environ['private_key']=st.session_state['cred']['key_data'][0]
-credentials = ee.ServiceAccountCredentials(service_account, key_data=os.environ.get('private_key').replace('\\n', '\n'))
-ee.Initialize(credentials)
+
 
 st.write('')
 st.header(":lock: Credenciales :unlock:")
