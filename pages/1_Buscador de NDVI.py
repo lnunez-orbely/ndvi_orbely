@@ -7,11 +7,9 @@ import plotly.graph_objects as go
 import pandas as pd
 import os
 
-
 st.set_page_config('Buscador', layout="wide")
 st.logo("Orbely_Logo2.png",icon_image="Orbely_Logo2.png", link="https://orbely.com/")
 st.header('Visualizador de NDVI')
-
 
 
 cont0 = st.container()
@@ -47,6 +45,7 @@ if 'clouds' not in st.session_state:
 
 if 'cred' in st.session_state and 'lotes' in st.session_state:
   select_client=st.sidebar.selectbox('Seleccionar Cliente',st.session_state['lotes'].cliente.unique(),index=None,placeholder='Cliente')
+  @st.cache_data()
   def auth():
     service_account = st.session_state['cred']['service_account'][0]
     os.environ['private_key']=st.session_state['cred']['key_data'][0]
