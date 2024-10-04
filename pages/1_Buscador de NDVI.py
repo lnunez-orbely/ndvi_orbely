@@ -98,7 +98,7 @@ if 'cred' in st.session_state and 'lotes' in st.session_state:
           def getNDVI(fecha1,fecha2,clouds0, lote):
               name= lote
               Sentinel= (ee.ImageCollection('COPERNICUS/S2_HARMONIZED')
-                              .filterBounds(_point0)
+                              .filterBounds(point)
                               .filterDate(fecha1,fecha2)
                               .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', clouds0))
                               .select('B4','B3','B2','B8'))
