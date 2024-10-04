@@ -114,7 +114,7 @@ if 'cred' in st.session_state and 'lotes' in st.session_state:
               return lista0,list_prom0
 
           @st.cache_data(show_spinner=False,max_entries=1)
-          def time_plot(lista_promedio):
+          def time_plot(lista_promedio,_point0):
             mean_ndvi,std_ndvi,fecha_list0,coef_var0=[],[],[],[]
             for i in range(0,len(lista_promedio)-1):
               mean_ndvi.append(lista_promedio[i][0]['NDVI_mean'])
@@ -139,10 +139,10 @@ if 'cred' in st.session_state and 'lotes' in st.session_state:
             fig0.update_xaxes(tickangle = 315, nticks=20,showgrid=True)
             df=pd.DataFrame(dict1)
             csv0=df.to_csv(index=False).encode('utf-8')
-            return fig0,fecha_list0,csv0       
+            return fig0,fecha_list0,csv0      
 
           lista, fecha_mean = getNDVI(fecha11,fecha22,st.session_state['clouds'], point)
-          fig,fecha_list,csv= time_plot(fecha_mean)
+          fig,fecha_list,csv= time_plot(fecha_mean, point)
 
           with tab2:
             event = st.plotly_chart(fig, on_select="rerun")
