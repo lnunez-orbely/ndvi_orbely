@@ -114,7 +114,7 @@ if 'cred' in st.session_state and 'lotes' in st.session_state:
               return lista0,list_prom0
 
           @st.cache_data(show_spinner=False,max_entries=1)
-          def time_plot(lista_promedio,_point0):
+          def time_plot(lista_promedio,lote0):
             mean_ndvi,std_ndvi,fecha_list0,coef_var0=[],[],[],[]
             for i in range(0,len(lista_promedio)-1):
               mean_ndvi.append(lista_promedio[i][0]['NDVI_mean'])
@@ -133,7 +133,7 @@ if 'cred' in st.session_state and 'lotes' in st.session_state:
                                     fill='tonexty',fillcolor='rgba(26,150,65,0.5)',mode='lines',line_color='indigo',
                                     line=dict(width=0.2), name="Desvío Estándar"))
             fig0.add_trace(go.Scatter(x=xpoints,
-                                    y=ypoints,mode='lines+markers',line_color='rgba(255, 182, 193, 1)', name="Promedio NDVI"))
+                                    y=ypoints,mode='lines+markers',line_color='rgba(255, 182, 193, 1)', name=f"Promedio NDVI {lote0}"))
             fig0.update_layout(xaxis_title="Fecha", yaxis_title="NDVI", width=900, height=500, 
                               legend = dict(orientation = 'h', xanchor = "center", x = 0.5, y= 1.1,font=dict(size=14)))
             fig0.update_xaxes(tickangle = 315, nticks=20,showgrid=True)
@@ -142,7 +142,7 @@ if 'cred' in st.session_state and 'lotes' in st.session_state:
             return fig0,fecha_list0,csv0      
 
           lista, fecha_mean = getNDVI(fecha11,fecha22,st.session_state['clouds'], point)
-          fig,fecha_list,csv= time_plot(fecha_mean, point)
+          fig,fecha_list,csv= time_plot(fecha_mean, select_lote)
 
           with tab2:
             event = st.plotly_chart(fig, on_select="rerun")
