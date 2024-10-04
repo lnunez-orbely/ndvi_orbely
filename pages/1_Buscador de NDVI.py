@@ -96,9 +96,9 @@ if 'cred' in st.session_state and 'lotes' in st.session_state:
             return image.addBands(image.normalizedDifference(['B8', 'B4']).rename('NDVI'))
 
           @st.cache_data(max_entries=1,show_spinner=False)
-          def getNDVI(fecha1,fecha2,clouds0):
+          def getNDVI(fecha1,fecha2,clouds0, _point0):
               Sentinel= (ee.ImageCollection('COPERNICUS/S2_HARMONIZED')
-                              .filterBounds(point)
+                              .filterBounds(_point0)
                               .filterDate(fecha1,fecha2)
                               .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', clouds0))
                               .select('B4','B3','B2','B8'))
@@ -142,7 +142,7 @@ if 'cred' in st.session_state and 'lotes' in st.session_state:
             csv0=df.to_csv(index=False).encode('utf-8')
             return fig0,fecha_list0,csv0       
 
-          lista, fecha_mean = getNDVI(fecha11,fecha22,st.session_state['clouds'])
+          lista, fecha_mean = getNDVI(fecha11,fecha22,st.session_state['clouds'], point)
           fig,fecha_list,csv= time_plot(fecha_mean)
 
           with tab2:
