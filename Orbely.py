@@ -26,8 +26,6 @@ im1=col001.image('Sentinel_2_1.png', width=100)
 title=col002.title("Visualización y Descarga de :green[NDVI]")
 im2=col003.image('Sentinel_2_2.png', width=100)
 
-
-
 st.write('')
 st.header(":lock: Credenciales :unlock:")
 cont0 = st.container()
@@ -45,6 +43,7 @@ lote_shp=col2.file_uploader("Cargar Lote Suelto (shp zipeado o geojson)", type={
 if cred:
     cred_df=pd.read_csv(cred)
     st.session_state['cred']=cred_df
+    @st.cache_data()
     def auth():
                 service_account = st.session_state['cred']['service_account'][0]
                 os.environ['private_key']=st.session_state['cred']['key_data'][0]
