@@ -43,7 +43,6 @@ lote_shp=col2.file_uploader("Cargar Lote Suelto (shp zipeado o geojson)", type={
 if cred:
     cred_df=pd.read_csv(cred)
     st.session_state['cred']=cred_df
-    @st.cache_data()
     def auth():
                 service_account = st.session_state['cred']['service_account'][0]
                 os.environ['private_key']=st.session_state['cred']['key_data'][0]
