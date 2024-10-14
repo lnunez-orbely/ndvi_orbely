@@ -11,6 +11,10 @@ st.set_page_config('Buscador', layout="wide")
 st.logo("Orbely_Logo2.png",icon_image="Orbely_Logo2.png", link="https://orbely.com/")
 st.header('Visualizador de NDVI')
 
+service_account = st.session_state['cred']['service_account'][0]
+os.environ['private_key']=st.session_state['cred']['key_data'][0]
+credentials = ee.ServiceAccountCredentials(service_account, key_data=os.environ.get('private_key').replace('\\n', '\n'))
+ee.Initialize(credentials)
 
 cont0 = st.container()
 col01, col02 = cont0.columns([4, 1.1])
